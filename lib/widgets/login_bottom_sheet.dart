@@ -47,9 +47,14 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [Padding(
-        padding: const EdgeInsets.all(30),
+    return Wrap(children: [
+      Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+          top: 30,
+          left: 30,
+          right: 30,
+        ),
         child: Form(
             key: _formKey,
             child: Column(
@@ -128,33 +133,35 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
                 const SizedBox(
                   height: 5,
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Checkbox(
-                          value: _isRemember,
-                          onChanged: (val) {
-                            setState(() {
-                              _isRemember = val!;
-                            });
-                          }),
-                      Text(
-                        "Remember me",
-                        style: AppTextStyles.small
-                            .copyWith(color: AppColors.primary),
-                        textAlign: TextAlign.left,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Checkbox(
+                              value: _isRemember,
+                              onChanged: (val) {
+                                setState(() {
+                                  _isRemember = val!;
+                                });
+                              }),
+                          Text(
+                            "Remember me",
+                            style: AppTextStyles.small
+                                .copyWith(color: AppColors.primary),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Forgot Password?',
-                        style: AppTextStyles.small
-                            .copyWith(color: AppColors.primary),
-                      )),
-                ]),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Forgot Password?',
+                            style: AppTextStyles.small
+                                .copyWith(color: AppColors.primary),
+                          )),
+                    ]),
                 ElevatedButton(
                   onPressed: _submit,
                   child: const Text("Login"),

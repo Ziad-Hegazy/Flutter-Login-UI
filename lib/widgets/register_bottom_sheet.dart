@@ -39,10 +39,10 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
     if (_formKey.currentState!.validate() ?? false) {
       final user = _userController.createUser(
           _usernameController.text, _passwordController.text);
-      print("Login as ${user.username}");
+      print("registered as ${user.username}");
       Navigator.pop(context);
     } else {
-      print("Login Failed");
+      print("Register Failed");
     }
   }
 
@@ -50,7 +50,12 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
   Widget build(BuildContext context) {
     return Wrap(
       children: [Padding(
-        padding: const EdgeInsets.all(30),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+          top: 30,
+          left: 30,
+          right: 30,
+        ),
         child: Form(
             key: _formKey,
             child: Column(
