@@ -32,8 +32,23 @@ class AppTheme {
               strokeAlign: BorderSide.strokeAlignOutside),
           borderRadius: BorderRadius.circular(13),
         ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+              color: AppColors.secondary,
+              width: 3,
+              strokeAlign: BorderSide.strokeAlignOutside),
+          borderRadius: BorderRadius.circular(13),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+              color: AppColors.secondary,
+              width: 3,
+              strokeAlign: BorderSide.strokeAlignOutside),
+          borderRadius: BorderRadius.circular(13),
+        ),
+        errorStyle: AppTextStyles.FieldText.copyWith(color:AppColors.secondary,fontSize: 15),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
-        floatingLabelStyle: AppTextStyles.FieldText.copyWith(fontSize: 15),
+        floatingLabelStyle: AppTextStyles.FieldText.copyWith(fontSize: 20),
         ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(

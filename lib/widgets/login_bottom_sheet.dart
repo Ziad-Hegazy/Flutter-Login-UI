@@ -106,12 +106,12 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
                               color: AppColors.primary,
                             ),
                     ),
-                    labelText: "Username",
+                    labelText: "username/email",
                   ),
                   controller: _usernameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Username is required";
+                      return "An email or a username is required";
                     }
                     return null;
                   },

@@ -17,8 +17,8 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
 
   final _usernameController = TextEditingController();
    final _courseController = TextEditingController();
-
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   final _userController = UserController();
   bool _obscureUsername = true;
@@ -31,6 +31,12 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
 
     if (value.length < 8) {
       return 'Password must be at least 8 characters';
+    }
+    return null;
+  }
+  String? _validateConfirmPassword(String? value) {
+    if (value != _passwordController.text) {
+      return 'Passwords do not match';
     }
     return null;
   }
@@ -107,12 +113,12 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
                               color: AppColors.primary,
                             ),
                     ),
-                    labelText: "Username",
+                    labelText: "username/email",
                   ),
                   controller: _usernameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Username is required";
+                      return "An email or a username is required";
                     }
                     return null;
                   },
@@ -161,12 +167,25 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
                   obscureText: true,
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 15,
                 ),
-                SizedBox(height: 15,),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      labelText: "confirm password",
+                      suffixIcon: Icon(
+                        Icons.lock_outlined,
+                        color: Colors.black54,
+                      )),
+                  controller: _confirmPasswordController,
+                  validator: _validateConfirmPassword,
+                  obscureText: true,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Login"),
+                  onPressed: _submit,
+                  child: const Text("Register"),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
